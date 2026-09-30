@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net6.0;net10.0</TargetFrameworks>
+
+		<OutputPath>..\..\_output\$(FrameworkPath)\$(AssemblyName)</OutputPath>
+		<IntermediateOutputPath>..\..\_obj\$(FrameworkPath)\$(AssemblyName)</IntermediateOutputPath>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<AvaloniaResource Include="Assets\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Avalonia" />
+		<PackageReference Include="Avalonia.Themes.Fluent" />
+		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+		<PackageReference Condition="$(Configuration) == Debug" Include="Avalonia.Diagnostics" />
+		
+		<PackageReference Include="SpringCard.LibCs.GetText" />
+		<PackageReference Include="SpringCard.LibCs.Translations" />
+		<PackageReference Include="SpringCard.LibCs.Windows.UI" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\SpringCard.PCSC\SpringCard.PCSC.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="" />
+		<None Include="..\LICENSE.txt" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+</Project>

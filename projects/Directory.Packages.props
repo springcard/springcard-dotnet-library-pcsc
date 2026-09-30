@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageFloatingVersionsEnabled>true</CentralPackageFloatingVersionsEnabled>
+  </PropertyGroup>
+
+  <!-- Public Nuget -->
+  <ItemGroup>
+		<PackageVersion Include="Avalonia" Version="$(AvaloniaVersion)" />
+		<PackageVersion Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
+		<PackageVersion Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
+		<PackageVersion Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)" />
+		<PackageVersion Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
+
+    <PackageVersion Include="System.Configuration.ConfigurationManager" Version="10.0.1" />
+		<PackageVersion Include="System.Resources.Extensions" Version="5.0.0" />
+  </ItemGroup>
+
+  <!-- SpringCard Nuget -->
+  <ItemGroup>
+		<PackageVersion Include="SpringCard.Bluetooth" Version="24.44.*" />
+    <PackageVersion Include="SpringCard.LibCs" Version="25.21.*" />
+		<PackageVersion Include="SpringCard.LibCs.GetText" Version="25.21.*" />
+		<PackageVersion Include="SpringCard.LibCs.Translations" Version="25.21.*" />
+		<PackageVersion Include="SpringCard.LibCs.Windows" Version="24.44.*" />
+		<PackageVersion Include="SpringCard.LibCs.Windows.Forms" Version="24.44.*" />
+		<PackageVersion Include="SpringCard.LibCs.Windows.UI" Version="24.44.*" />
+  </ItemGroup>
+
+</Project>

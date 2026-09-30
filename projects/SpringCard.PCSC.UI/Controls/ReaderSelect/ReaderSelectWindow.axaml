@@ -1,0 +1,84 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+				xmlns:local="using:SpringCard.PCSC.UI.Controls.ReaderSelect"
+				xmlns:tabs="using:SpringCard.PCSC.UI.Controls.ReaderSelect.Tabs"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="400"
+        x:Class="SpringCard.PCSC.UI.Controls.ReaderSelect.ReaderSelectWindow"
+        Title="Reader Selection"
+				WindowStartupLocation="CenterOwner"
+				ShowInTaskbar="False"
+				Width="600" Height="400"
+				CanResize="False">
+	<Design.DataContext>
+		<local:ReaderSelectViewModel />
+	</Design.DataContext>
+
+	<Grid RowDefinitions="Auto, *, Auto, Auto" ColumnDefinitions="*, Auto, Auto">
+		<Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Fill="White" Margin="-15 0 -15 0" />
+		<TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+							 Theme="{StaticResource TitleH1}"
+							 VerticalAlignment="Center"
+							 Margin="0 10 0 10">
+			Select the PC/CS Reader:
+		</TextBlock>
+
+		<ListBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+						 ItemsSource="{Binding Readers}"
+						 SelectedItem="{Binding SelectedReader}"
+						 Margin="5"
+						 PointerPressed="ListBox_PointerPressed">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<TextBlock Text="{Binding}"
+										 Margin="5"
+										 VerticalAlignment="Center"
+										 HorizontalAlignment="Stretch"
+										 FontSize="14"
+										 PointerPressed="ListBox_PointerPressed"/>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+
+		<Button Grid.Row="2" Grid.Column="0"
+						Background="Transparent"
+						Margin="0" Padding="5 2 5 2"
+						Command="{Binding RefreshReaders}">
+			<Button.Content>
+				<StackPanel Orientation="Horizontal">
+					<Image Width="16" Height="16"
+								 VerticalAlignment="Center"
+								 Source="avares://SpringCard.PCSC.UI/Assets/refresh.png" />
+					<TextBlock VerticalAlignment="Center" Margin="8 5 0 5">
+						Reftresh the list
+					</TextBlock>
+				</StackPanel>
+			</Button.Content>
+		</Button>
+
+		<CheckBox Grid.Row="3" Grid.Column="0"
+							IsVisible="{Binding IsRememberVisible}"
+							IsChecked="{Binding IsRememberChecked}">
+			Remember the settings and re-open the same reader next time
+		</CheckBox>
+
+		<Button Grid.Row="2" Grid.RowSpan="2" Grid.Column="1"
+						Margin="5"
+						VerticalAlignment="Bottom"
+						HorizontalContentAlignment="Center"
+						Width="60"
+						Command="{Binding ConfirmSelection}"
+						IsEnabled="{Binding SelectedReader, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
+			OK
+		</Button>
+		<Button Grid.Row="2" Grid.RowSpan="2" Grid.Column="2"
+						Margin="5"
+						VerticalAlignment="Bottom"
+						HorizontalContentAlignment="Center"
+						Width="60"
+						Command="{Binding Cancel}">
+			Cancel
+		</Button>
+	</Grid>
+</Window>

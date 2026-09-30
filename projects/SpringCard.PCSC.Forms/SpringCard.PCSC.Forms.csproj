@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net48</TargetFrameworks>
+		
+		<UseWindowsForms>true</UseWindowsForms>
+
+		<OutputPath>..\..\_output\$(FrameworkPath)\$(AssemblyName)</OutputPath>
+		<IntermediateOutputPath>..\..\_obj\$(FrameworkPath)\$(AssemblyName)</IntermediateOutputPath>
+
+		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+		<SatelliteAssemblyName>$(TargetFileName)</SatelliteAssemblyName>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="SpringCard.LibCs.Windows" />
+		<PackageReference Include="System.Resources.Extensions" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\SpringCard.PCSC\SpringCard.PCSC.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="" />
+		<None Include="..\LICENSE.txt" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,11 @@
+<Application xmlns="https://github.com/avaloniaui"
+						 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						 xmlns:sc="using:SpringCard.LibCs.Windows.UI.Themes"
+						 x:Class="Test.UI.App"
+						 RequestedThemeVariant="Light">
+	
+	<Application.Styles>
+		<sc:SpringCardTheme />
+		<StyleInclude Source="avares://Avalonia.Controls.TreeDataGrid/Themes/Fluent.axaml"/>
+	</Application.Styles>
+</Application>
